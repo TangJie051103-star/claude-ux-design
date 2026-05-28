@@ -1,27 +1,49 @@
-import Button from "@/components/ui/Button";
+import { Routes, Route, NavLink } from "react-router-dom";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
+import ThemeToggle from "@/components/ui/ThemeToggle";
+import useRuntimeAxe from "@/hooks/useRuntimeAxe";
+import Home from "@/pages/Home";
+import Components from "@/pages/Components";
+import Tokens from "@/pages/Tokens";
+
+const NAV_ITEMS = [
+  { to: "/", label: "首页" },
+  { to: "/components", label: "组件" },
+  { to: "/tokens", label: "设计规范" },
+];
+
+function navLinkClass({ isActive }: { isActive: boolean }) {
+  return `rounded-button px-3 py-1.5 text-sm font-medium transition-colors ${
+    isActive
+      ? "bg-primary-100 text-primary-700 dark:bg-primary-900 dark:text-primary-300"
+      : "text-slate-600 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"
+  }`;
+}
 
 export default function App() {
+  useRuntimeAxe();
+
   return (
     <ErrorBoundary>
-      <div className="flex min-h-screen items-center justify-center bg-slate-50 p-8 dark:bg-slate-950">
-        <div className="w-full max-w-md rounded-xl border border-slate-200 bg-white p-8 text-center shadow-sm dark:border-slate-700 dark:bg-slate-900">
-          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary-500">
-            <span className="text-2xl font-bold text-white">UX</span>
-          </div>
-          <h1 className="mb-2 text-2xl text-slate-900 dark:text-slate-100">设计预览环境</h1>
-          <p className="mb-6 text-sm text-slate-500 dark:text-slate-400">
-            React + Vite + Tailwind CSS + shadcn/ui
-            <br />
-            设计系统：indigo · Inter · 4px 基准
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            <Button>开始设计</Button>
-            <Button intent="secondary">查看文档</Button>
-            <Button intent="outline">设计师入口</Button>
-          </div>
+      <div className="min-h-screen bg-slate-50 dark:bg-slate-950">
+          <nav className="sticky top-0 z-10 flex items-center justify-between border-b border-slate-200 bg-white/80 px-4 py-2 backdrop-blur dark:border-slate-700 dark:bg-slate-900/80">
+            <div className="flex items-center gap-1">
+              {NAV_ITEMS.map((item) => (
+                <NavLink key={item.to} to={item.to} end={item.to === "/"} className={navLinkClass}>
+                  {item.label}
+                </NavLink>
+              ))}
+            </div>
+            <ThemeToggle />
+          </nav>
+          <main>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/components" element={<Components />} />
+              <Route path="/tokens" element={<Tokens />} />
+            </Routes>
+          </main>
         </div>
-      </div>
     </ErrorBoundary>
   );
 }

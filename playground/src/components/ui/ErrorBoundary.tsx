@@ -38,7 +38,7 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
       return (
         <div
           role="alert"
-          className="flex flex-col items-center justify-center gap-4 rounded-xl border border-red-200 bg-red-50 p-8 text-center dark:border-red-800 dark:bg-red-950"
+          className="flex flex-col items-center justify-center gap-4 rounded-card border border-red-200 bg-red-50 p-8 text-center dark:border-red-800 dark:bg-red-950"
         >
           <div className="text-4xl">&#9888;</div>
           <h2 className="text-lg font-semibold text-red-800 dark:text-red-300">页面出现了错误</h2>
