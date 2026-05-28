@@ -23,7 +23,7 @@ try {
   Push-Location $Playground
 
   # 1. TypeScript compilation
-  Write-Host "[1/3] TypeScript compilation..." -ForegroundColor Yellow
+  Write-Host "[1/4] TypeScript compilation..." -ForegroundColor Yellow
   npx tsc -b 2>&1 | Out-Null
   if ($LASTEXITCODE -eq 0) {
     Write-Pass "tsc: zero errors"
@@ -34,7 +34,7 @@ try {
   }
 
   # 2. ESLint
-  Write-Host "[2/3] ESLint..." -ForegroundColor Yellow
+  Write-Host "[2/4] ESLint..." -ForegroundColor Yellow
   npx eslint . 2>&1 | Out-Null
   if ($LASTEXITCODE -eq 0) {
     Write-Pass "eslint: zero warnings"
