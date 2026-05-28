@@ -1,5 +1,8 @@
 import { useState } from "react";
 import Button from "@/components/ui/Button";
+import Card from "@/components/ui/Card";
+import { SkeletonText, SkeletonCircle, SkeletonButton } from "@/components/ui/Skeleton";
+import Input from "@/components/ui/Input";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 
@@ -45,7 +48,10 @@ export default function Components() {
           <table className="w-full border-collapse">
             <thead>
               <tr>
-                <th className="p-2 text-left text-sm text-slate-500 dark:text-slate-400" scope="col">
+                <th
+                  className="p-2 text-left text-sm text-slate-500 dark:text-slate-400"
+                  scope="col"
+                >
                   风格
                 </th>
                 {SIZES.map((size) => (
@@ -96,12 +102,10 @@ export default function Components() {
         <p className="text-sm text-slate-500 dark:text-slate-400">
           点击图标切换亮色/暗色模式，偏好保存到 localStorage
         </p>
-        <div className="flex items-center gap-3 rounded-card border border-slate-200 bg-white p-4 shadow-1 dark:border-slate-700 dark:bg-slate-900">
+        <Card className="flex items-center gap-3 p-4">
           <ThemeToggle />
-          <span className="text-sm text-slate-600 dark:text-slate-400">
-            点击此处切换主题 →
-          </span>
-        </div>
+          <span className="text-sm text-slate-600 dark:text-slate-400">点击此处切换主题 →</span>
+        </Card>
       </section>
 
       {/* ErrorBoundary 区块 */}
@@ -112,12 +116,10 @@ export default function Components() {
         <p className="text-sm text-slate-500 dark:text-slate-400">
           捕获子组件渲染错误，展示友好提示并提供重试
         </p>
-        <div className="rounded-card border border-slate-200 bg-white p-6 shadow-1 dark:border-slate-700 dark:bg-slate-900">
+        <Card className="p-6">
           <ErrorBoundary>
             <div className="space-y-3">
-              <p className="text-sm text-slate-600 dark:text-slate-400">
-                当前状态：正常运行中
-              </p>
+              <p className="text-sm text-slate-600 dark:text-slate-400">当前状态：正常运行中</p>
               <div className="flex items-center gap-2 text-sm text-emerald-600">
                 <span className="inline-block h-2 w-2 rounded-full bg-emerald-500" />
                 组件正确挂载
@@ -125,6 +127,69 @@ export default function Components() {
               <ErrorTrigger />
             </div>
           </ErrorBoundary>
+        </Card>
+      </section>
+
+      {/* Card 区块 */}
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Card 卡片</h2>
+        <p className="text-sm text-slate-500 dark:text-slate-400">
+          统一的卡片容器，支持 as prop 切换 HTML 标签
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Card className="p-4">
+            <h3 className="mb-1 font-semibold text-slate-900 dark:text-slate-100">默认卡片</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              使用默认 div 渲染，带有圆角和阴影
+            </p>
+          </Card>
+          <Card as="section" className="p-4">
+            <h3 className="mb-1 font-semibold text-slate-900 dark:text-slate-100">section 卡片</h3>
+            <p className="text-sm text-slate-500 dark:text-slate-400">
+              使用 as="section" 渲染为语义化标签
+            </p>
+          </Card>
+        </div>
+      </section>
+
+      {/* Skeleton 区块 */}
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300">
+          Skeleton 加载占位
+        </h2>
+        <p className="text-sm text-slate-500 dark:text-slate-400">
+          四种变体：默认、文本、圆形、按钮
+        </p>
+        <Card className="space-y-4 p-6">
+          <div className="flex items-center gap-3">
+            <SkeletonCircle />
+            <div className="flex-1 space-y-2">
+              <SkeletonText className="w-3/4" />
+              <SkeletonText className="w-1/2" />
+            </div>
+          </div>
+          <div className="flex gap-3">
+            <SkeletonButton />
+            <SkeletonButton className="w-32" />
+          </div>
+        </Card>
+      </section>
+
+      {/* Input 区块 */}
+      <section className="space-y-4">
+        <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300">Input 输入框</h2>
+        <p className="text-sm text-slate-500 dark:text-slate-400">
+          支持 label、error、disabled 状态
+        </p>
+        <div className="grid gap-4 sm:grid-cols-2">
+          <Card className="space-y-4 p-4">
+            <Input label="邮箱" placeholder="user@example.com" />
+            <Input label="密码" type="password" placeholder="请输入密码" />
+          </Card>
+          <Card className="space-y-4 p-4">
+            <Input label="用户名" error="用户名已被占用" defaultValue="admin" />
+            <Input label="禁用状态" disabled value="不可编辑" />
+          </Card>
         </div>
       </section>
     </div>

@@ -31,6 +31,26 @@ describe("Components", () => {
     expect(buttons.length).toBeGreaterThanOrEqual(15);
   });
 
+  it("渲染 Card 区块", () => {
+    render(<Components />);
+    expect(screen.getByText("Card 卡片")).toBeInTheDocument();
+    expect(screen.getByText("默认卡片")).toBeInTheDocument();
+    expect(screen.getByText("section 卡片")).toBeInTheDocument();
+  });
+
+  it("渲染 Skeleton 区块", () => {
+    render(<Components />);
+    expect(screen.getByText("Skeleton 加载占位")).toBeInTheDocument();
+  });
+
+  it("渲染 Input 区块", () => {
+    render(<Components />);
+    expect(screen.getByText("Input 输入框")).toBeInTheDocument();
+    expect(screen.getByLabelText("邮箱")).toBeInTheDocument();
+    expect(screen.getByLabelText("密码")).toBeInTheDocument();
+    expect(screen.getByLabelText("用户名")).toBeInTheDocument();
+  });
+
   it("无障碍：无 a11y violations", async () => {
     const { container } = render(<Components />);
     const results = await axe(container);

@@ -14,7 +14,7 @@ describe("Button", () => {
 
   it("intent 变体应用正确的样式类", () => {
     const { rerender } = render(<Button intent="danger">删除</Button>);
-    expect(screen.getByRole("button")).toHaveClass("bg-red-600");
+    expect(screen.getByRole("button")).toHaveClass("bg-error-600");
 
     rerender(<Button intent="secondary">取消</Button>);
     expect(screen.getByRole("button")).toHaveClass("bg-slate-100");

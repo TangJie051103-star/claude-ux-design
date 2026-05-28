@@ -133,6 +133,20 @@ test.describe("路由页面", () => {
   test("/tokens 渲染设计规范页", async ({ page }) => {
     await page.goto("/tokens");
     await expect(page.locator("h1")).toHaveText("设计 Token");
-    await expect(page.getByText(/色板/)).toBeVisible();
+    await expect(page.getByRole("heading", { name: "色板 · Primary (indigo)" })).toBeVisible();
+  });
+});
+
+// ==================== 页面截图（视觉回归） ====================
+
+test.describe("页面截图", () => {
+  test("/components 页面截图（亮色）", async ({ page }) => {
+    await page.goto("/components");
+    await expect(page).toHaveScreenshot("components.png", { fullPage: true });
+  });
+
+  test("/tokens 页面截图（亮色）", async ({ page }) => {
+    await page.goto("/tokens");
+    await expect(page).toHaveScreenshot("tokens.png", { fullPage: true });
   });
 });

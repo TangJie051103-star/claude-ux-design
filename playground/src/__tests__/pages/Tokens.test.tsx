@@ -11,7 +11,8 @@ describe("Tokens", () => {
 
   it("渲染色板区块", () => {
     render(<Tokens />);
-    expect(screen.getByText(/色板/)).toBeInTheDocument();
+    const palettes = screen.getAllByText(/色板/);
+    expect(palettes.length).toBeGreaterThan(0);
   });
 
   it("渲染字体区块", () => {

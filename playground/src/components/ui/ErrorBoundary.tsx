@@ -38,11 +38,13 @@ export default class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBo
       return (
         <div
           role="alert"
-          className="flex flex-col items-center justify-center gap-4 rounded-card border border-red-200 bg-red-50 p-8 text-center dark:border-red-800 dark:bg-red-950"
+          className="flex flex-col items-center justify-center gap-4 rounded-card border border-error-200 bg-error-50 p-8 text-center dark:border-error-800 dark:bg-error-950"
         >
           <div className="text-4xl">&#9888;</div>
-          <h2 className="text-lg font-semibold text-red-800 dark:text-red-300">页面出现了错误</h2>
-          <p className="text-sm text-red-600 dark:text-red-400">
+          <h2 className="text-lg font-semibold text-error-800 dark:text-error-300">
+            页面出现了错误
+          </h2>
+          <p className="text-sm text-error-600 dark:text-error-400">
             {this.state.error?.message ?? "未知错误"}
           </p>
           <Button intent="danger" size="sm" onClick={this.handleReset}>
