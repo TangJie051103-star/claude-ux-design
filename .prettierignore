@@ -27,4 +27,5 @@
 
 # 输出目录
 dist/
+coverage/
 node_modules/
