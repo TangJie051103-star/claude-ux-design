@@ -1,18 +1,7 @@
-import { defineConfig } from "vitest/config";
-import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
-import { resolve } from "path";
-import { fileURLToPath } from "url";
+import { mergeConfig } from "vitest/config";
+import viteConfig from "./vite.config";
 
-const __dirname = fileURLToPath(new URL(".", import.meta.url));
-
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  resolve: {
-    alias: {
-      "@": resolve(__dirname, "./src"),
-    },
-  },
+export default mergeConfig(viteConfig, {
   test: {
     environment: "jsdom",
     setupFiles: ["./src/test-setup.ts"],
