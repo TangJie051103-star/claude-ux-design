@@ -45,13 +45,24 @@ try {
   }
 
   # 3. Vitest
-  Write-Host "[3/3] Vitest..." -ForegroundColor Yellow
+  Write-Host "[3/4] Vitest..." -ForegroundColor Yellow
   npx vitest run 2>&1 | Out-Null
   if ($LASTEXITCODE -eq 0) {
     Write-Pass "vitest: all tests passed"
   } else {
     Write-Fail "vitest: tests failed"
     npx vitest run 2>&1 | Write-Host
+    $failed++
+  }
+
+  # 4. Playwright E2E
+  Write-Host "[4/4] Playwright..." -ForegroundColor Yellow
+  npx playwright test 2>&1 | Out-Null
+  if ($LASTEXITCODE -eq 0) {
+    Write-Pass "playwright: e2e passed"
+  } else {
+    Write-Fail "playwright: e2e failed"
+    npx playwright test 2>&1 | Write-Host
     $failed++
   }
 } finally {
