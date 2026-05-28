@@ -1,9 +1,9 @@
 import lighthouse from "lighthouse";
 import * as chromeLauncher from "chrome-launcher";
 import { chromium } from "@playwright/test";
-import { createServer } from "vite";
+import { build, preview } from "vite";
 
-const TARGET = "http://localhost:5173";
+const TARGET = "http://localhost:4173";
 const THRESHOLDS = {
   performance: 90,
   accessibility: 90,
@@ -13,18 +13,22 @@ const THRESHOLDS = {
 };
 
 async function run() {
-  console.log("Starting Vite dev server...");
-  const server = await createServer({ root: process.cwd() });
-  await server.listen(5173);
+  console.log("Building for production...");
+  await build({ root: process.cwd() });
+
+  console.log("Starting Vite preview server...");
+  const server = await preview({ root: process.cwd() });
 
   console.log("Launching Chromium...");
   const chromePath = chromium.executablePath();
-  const chrome = await chromeLauncher.launch({
-    chromePath,
-    chromeFlags: ["--headless=new", "--no-sandbox"],
-  });
+  let chrome;
 
   try {
+    chrome = await chromeLauncher.launch({
+      chromePath,
+      chromeFlags: ["--headless=new", "--no-sandbox"],
+    });
+
     console.log("Running Lighthouse audit...\n");
     const result = await lighthouse(
       TARGET,
@@ -79,7 +83,7 @@ async function run() {
       console.log("\x1b[32m  All checks passed.\x1b[0m");
     }
   } finally {
-    await chrome.kill();
+    if (chrome) await chrome.kill();
     await server.close();
   }
 }

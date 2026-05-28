@@ -1,5 +1,6 @@
 import useTokenValue from "@/hooks/useTokenValue";
 import Card from "@/components/ui/Card";
+import { primaryPalette, semanticPalettes, shadows } from "@/lib/tokens";
 
 const PRIMARY_SHADES = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
 
@@ -26,28 +27,13 @@ const FONT_SAMPLES = [
 
 const SHADOW_LEVELS = [1, 2, 3, 4, 5];
 
-const SEMANTIC_PALETTES = [
-  {
-    name: "Success (emerald)",
-    prefix: "success",
-    shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
-  },
-  {
-    name: "Warning (amber)",
-    prefix: "warning",
-    shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
-  },
-  {
-    name: "Error (red)",
-    prefix: "error",
-    shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
-  },
-  {
-    name: "Info (sky)",
-    prefix: "info",
-    shades: [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950],
-  },
-];
+const SHADOW_LABELS: Record<number, string> = {
+  1: "卡片悬停",
+  2: "下拉菜单",
+  3: "模态框",
+  4: "极少使用",
+  5: "极少使用",
+};
 
 const RADIUS_TOKENS = ["--radius-button", "--radius-card", "--radius-modal"] as const;
 
@@ -56,17 +42,6 @@ const radiusLabels: Record<string, string> = {
   "--radius-card": "Card 卡片",
   "--radius-modal": "Modal 模态框",
 };
-
-function ShadowCard({ level }: { level: number }) {
-  const shadowClass = `shadow-${level}`;
-
-  return (
-    <Card className={`p-4 dark:border-slate-600 dark:bg-slate-800 ${shadowClass}`}>
-      <p className="text-sm font-medium text-slate-700 dark:text-slate-300">shadow-{level}</p>
-      <p className="text-xs text-slate-500 dark:text-slate-400">卡片悬停 / 下拉 / 模态框</p>
-    </Card>
-  );
-}
 
 interface TokenDemoProps {
   label: string;
@@ -125,6 +100,18 @@ function RadiusDemo({ token }: { token: string }) {
   );
 }
 
+function ShadowCard({ level }: { level: number }) {
+  return (
+    <Card
+      className="p-4 dark:border-slate-600 dark:bg-slate-800"
+      style={{ boxShadow: shadows[level] }}
+    >
+      <p className="text-sm font-medium text-slate-700 dark:text-slate-300">shadow-{level}</p>
+      <p className="text-xs text-slate-500 dark:text-slate-400">{SHADOW_LABELS[level]}</p>
+    </Card>
+  );
+}
+
 export default function Tokens() {
   return (
     <div className="mx-auto max-w-4xl space-y-12 px-4 py-8">
@@ -140,7 +127,7 @@ export default function Tokens() {
             <div key={shade} className="space-y-1 text-center">
               <div
                 className="h-12 rounded border border-slate-200 dark:border-slate-700"
-                style={{ backgroundColor: `var(--color-primary-${shade})` }}
+                style={{ backgroundColor: primaryPalette[shade] }}
               />
               <span className="text-xs text-slate-500 dark:text-slate-400">{shade}</span>
             </div>
@@ -149,17 +136,17 @@ export default function Tokens() {
       </section>
 
       {/* 语义色板 */}
-      {SEMANTIC_PALETTES.map((palette) => (
-        <section key={palette.prefix} className="space-y-4">
+      {Object.entries(semanticPalettes).map(([prefix, palette]) => (
+        <section key={prefix} className="space-y-4">
           <h2 className="text-lg font-semibold text-slate-700 dark:text-slate-300">
             色板 · {palette.name}
           </h2>
           <div className="grid grid-cols-11 gap-1">
-            {palette.shades.map((shade) => (
+            {PRIMARY_SHADES.map((shade) => (
               <div key={shade} className="space-y-1 text-center">
                 <div
                   className="h-12 rounded border border-slate-200 dark:border-slate-700"
-                  style={{ backgroundColor: `var(--color-${palette.prefix}-${shade})` }}
+                  style={{ backgroundColor: palette.colors[shade] }}
                 />
                 <span className="text-xs text-slate-500 dark:text-slate-400">{shade}</span>
               </div>
