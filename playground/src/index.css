@@ -13,9 +13,9 @@
   --color-primary-800: #3730a3;
   --color-primary-900: #312e81;
   --color-primary-950: #1e1b4b;
-  --font-sans: 'Inter', system-ui, sans-serif;
-  --font-heading: 'Playfair Display', Georgia, serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -27,12 +27,16 @@
     line-height: 1.6;
   }
 
-  h1, h2, h3 {
+  h1,
+  h2,
+  h3 {
     font-family: var(--font-heading);
     line-height: 1.25;
   }
 
   @media (min-width: 768px) {
-    body { font-size: 18px; }
+    body {
+      font-size: 18px;
+    }
   }
 }

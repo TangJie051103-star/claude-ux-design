@@ -56,7 +56,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "if (Test-Path .prettierrc) { npx prettier --write \"$env:CLAUDE_FILE_PATH\" 2>$null }"
+            "command": "[ -f playground/.prettierrc ] && npx prettier --write \"$CLAUDE_FILE_PATH\" 2>/dev/null; true"
           }
         ]
       }

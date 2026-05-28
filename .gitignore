@@ -31,6 +31,20 @@ lerna-debug.log*
 *.sln
 *.sw?
 
+# AI tool configs (per-instance settings, not for git)
+.agent/
+.codebuddy/
+.codex/
+.continue/
+.cursor/
+.gemini/
+.kiro/
+.opencode/
+.qoder/
+.roo/
+.trae/
+.windsurf/
+
 # Output (AI-generated images, videos)
 output/images/*
 output/*.png

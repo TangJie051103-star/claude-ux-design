@@ -1,0 +1,30 @@
+# Prettier 不认识的文件类型
+*.ps1
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.ico
+*.pdf
+*.pen
+
+# 工具配置目录（非项目代码，不格式化）
+.agent/
+.codebuddy/
+.codex/
+.continue/
+.cursor/
+.gemini/
+.github/
+.kiro/
+.opencode/
+.qoder/
+.roo/
+.trae/
+.vscode/
+.windsurf/
+
+# 输出目录
+dist/
+node_modules/

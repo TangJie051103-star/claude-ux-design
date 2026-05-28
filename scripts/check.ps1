@@ -19,10 +19,11 @@ $failed = 0
 
 Write-Host "===== Quality Check Start (playground) =====" -ForegroundColor Cyan
 
-# 1. TypeScript compilation
-Write-Host "[1/3] TypeScript compilation..." -ForegroundColor Yellow
-Push-Location $Playground
-if ($?) {
+try {
+  Push-Location $Playground
+
+  # 1. TypeScript compilation
+  Write-Host "[1/3] TypeScript compilation..." -ForegroundColor Yellow
   npx tsc -b 2>&1 | Out-Null
   if ($LASTEXITCODE -eq 0) {
     Write-Pass "tsc: zero errors"
@@ -31,16 +32,9 @@ if ($?) {
     npx tsc -b 2>&1 | Write-Host
     $failed++
   }
-  Pop-Location
-} else {
-  Write-Fail "Cannot access playground directory"
-  $failed++
-}
 
-# 2. ESLint
-Write-Host "[2/3] ESLint..." -ForegroundColor Yellow
-Push-Location $Playground
-if ($?) {
+  # 2. ESLint
+  Write-Host "[2/3] ESLint..." -ForegroundColor Yellow
   npx eslint . 2>&1 | Out-Null
   if ($LASTEXITCODE -eq 0) {
     Write-Pass "eslint: zero warnings"
@@ -49,16 +43,9 @@ if ($?) {
     npx eslint . 2>&1 | Write-Host
     $failed++
   }
-  Pop-Location
-} else {
-  Write-Fail "Cannot access playground directory"
-  $failed++
-}
 
-# 3. Vitest
-Write-Host "[3/3] Vitest..." -ForegroundColor Yellow
-Push-Location $Playground
-if ($?) {
+  # 3. Vitest
+  Write-Host "[3/3] Vitest..." -ForegroundColor Yellow
   npx vitest run 2>&1 | Out-Null
   if ($LASTEXITCODE -eq 0) {
     Write-Pass "vitest: all tests passed"
@@ -67,10 +54,8 @@ if ($?) {
     npx vitest run 2>&1 | Write-Host
     $failed++
   }
+} finally {
   Pop-Location
-} else {
-  Write-Fail "Cannot access playground directory"
-  $failed++
 }
 
 Write-Host ""

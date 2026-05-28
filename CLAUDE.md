@@ -8,12 +8,12 @@
 
 本目录下已配置的技能：
 
-| 技能 | 用途 | 触发方式 |
-|------|------|----------|
-| `ui-ux-pro-max` | UI/UX 设计智能（风格、配色、字体、UX 准则） | 设计、review、改进 UI/UX 代码时自动参考 |
-| `frontend-design` | 生产级前端界面设计与实现 | 需要构建完整页面/组件时 |
-| `report-builder` | 设计文档、分析报告、会议记录 | 需要输出文档时 |
-| `Pencil MCP` | 可视化设计原型（.pen 文件） | 任何设计/UI/原型/线框图需求时自动启动 |
+| 技能              | 用途                                        | 触发方式                                |
+| ----------------- | ------------------------------------------- | --------------------------------------- |
+| `ui-ux-pro-max`   | UI/UX 设计智能（风格、配色、字体、UX 准则） | 设计、review、改进 UI/UX 代码时自动参考 |
+| `frontend-design` | 生产级前端界面设计与实现                    | 需要构建完整页面/组件时                 |
+| `report-builder`  | 设计文档、分析报告、会议记录                | 需要输出文档时                          |
+| `Pencil MCP`      | 可视化设计原型（.pen 文件）                 | 任何设计/UI/原型/线框图需求时自动启动   |
 
 ---
 
@@ -24,8 +24,9 @@
 ### 颜色
 
 默认使用 **Tailwind CSS 色板**：
+
 - Primary（主色）：`indigo` 系列
-- Neutral（中性色）：`slate` 系列  
+- Neutral（中性色）：`slate` 系列
 - Danger（危险/删除）：`red` 系列
 - Success（成功）：`emerald` 系列
 - Warning（警告）：`amber` 系列
@@ -34,11 +35,11 @@
 
 ### 字体
 
-| 用途 | 字体 | 备选 |
-|------|------|------|
-| UI 正文 | Inter | system-ui, sans-serif |
-| 标题 | Playfair Display | Georgia, serif |
-| 代码 | JetBrains Mono | Fira Code, monospace |
+| 用途    | 字体             | 备选                  |
+| ------- | ---------------- | --------------------- |
+| UI 正文 | Inter            | system-ui, sans-serif |
+| 标题    | Playfair Display | Georgia, serif        |
+| 代码    | JetBrains Mono   | Fira Code, monospace  |
 
 - 正文字号：移动端 ≥ 16px，桌面端 16-18px
 - 行高：正文 1.5-1.75，标题 1.2-1.3
@@ -59,10 +60,10 @@
 ### 阴影
 
 | 层级 | 使用场景 |
-|------|----------|
+| ---- | -------- |
 | `sm` | 卡片悬停 |
 | `md` | 下拉菜单 |
-| `lg` | 模态框 |
+| `lg` | 模态框   |
 | `xl` | 极少使用 |
 
 ### 性能基准
@@ -98,27 +99,32 @@
 > 具体代码示例见 [docs/code-examples.md](docs/code-examples.md)
 
 ### TypeScript
+
 - `strict: true`，用 `interface` 定义 Props，避免 `any`
 - 组件默认导出，工具函数命名导出；嵌套访问用 `?.` 和 `??`
 
 ### React
+
 - 单文件单组件，文件名 = 组件名（PascalCase）
 - hooks 顺序：`useState` → `useEffect` → 自定义 hooks → 事件处理 → 条件渲染
 - 事件命名：`handle` + 动作 + 对象（`handleMenuOpen`、`handleFormSubmit`）
 - 条件渲染优先 `&&` / 三元，复杂逻辑抽成变量
 
 ### Tailwind CSS
+
 - class 顺序：布局 → 尺寸 → 外观 → 文字 → 其他
 - 移动端优先，`sm:` → `md:` → `lg:` → `xl:` 递增覆盖
 - 重复样式用 `cva`（class-variance-authority），超过 8-10 个 class 考虑拆分
 
 ### 组件组织
+
 - **拆**：有独立状态/逻辑、JSX 重复 ≥3 次、文件 >150 行
 - **不拆**：纯美化、仅用一次且无独立逻辑
 - **状态**：单组件 `useState` → 父子传 props → 跨页面 `useContext`/Zustand
 - **目录**：`ui/` → `layout/` → `features/` → `shared/`（详见示例文件）
 
 ### 可访问性（A11y）
+
 - [ ] 对比度 ≥ 4.5:1（正文）/ ≥ 3:1（大文字）
 - [ ] Tab 可聚焦，Enter/Space 激活，Escape 关闭
 - [ ] 图标按钮 `aria-label`，表单有 `<label>`，动态内容 `aria-live`
@@ -127,12 +133,12 @@
 
 ### 错误与边界情况
 
-| 状态 | 处理 |
-|------|------|
-| 加载中 | `Skeleton` 占位 |
+| 状态   | 处理                |
+| ------ | ------------------- |
+| 加载中 | `Skeleton` 占位     |
 | 空数据 | 空态插图 + 引导文字 |
-| 错误 | 错误消息 + 重试按钮 |
-| 正常 | 数据展示 |
+| 错误   | 错误消息 + 重试按钮 |
+| 正常   | 数据展示            |
 
 - `ErrorBoundary` 包裹每个路由，表单校验错误放字段下方（不用 alert）
 
@@ -177,15 +183,16 @@
 
 ### 覆盖要求
 
-| 目录 | 要求 |
-|------|------|
-| `src/components/ui/` | 所有组件必须有测试 |
+| 目录                       | 要求                       |
+| -------------------------- | -------------------------- |
+| `src/components/ui/`       | 所有组件必须有测试         |
 | `src/components/features/` | 含异步逻辑的组件必须有测试 |
-| `src/hooks/` | 自定义 hook 必须有测试 |
+| `src/hooks/`               | 自定义 hook 必须有测试     |
 
 ### 测试内容
 
 每个组件测试至少覆盖：
+
 - **渲染**：默认 props 正确渲染
 - **交互**：点击、输入等核心事件
 - **变体**：variant / size 等 props 应用正确样式
@@ -229,6 +236,7 @@ describe("Button", () => {
 ### 分支命名
 
 `type/description` 格式，例如：
+
 - `feat/user-profile` — 新功能
 - `fix/button-hover` — 修复
 - `refactor/form-layout` — 重构
@@ -236,9 +244,11 @@ describe("Button", () => {
 ### Commit Message
 
 参考 Conventional Commits：
+
 ```
 type(scope): description
 ```
+
 类型：`feat` / `fix` / `refactor` / `style` / `docs` / `test` / `chore`
 
 ### 提交流程

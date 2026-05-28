@@ -9,9 +9,7 @@ export default function App() {
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary-500">
             <span className="text-2xl font-bold text-white">UX</span>
           </div>
-          <h1 className="mb-2 text-2xl text-slate-900 dark:text-slate-100">
-            设计预览环境
-          </h1>
+          <h1 className="mb-2 text-2xl text-slate-900 dark:text-slate-100">设计预览环境</h1>
           <p className="mb-6 text-sm text-slate-500 dark:text-slate-400">
             React + Vite + Tailwind CSS + shadcn/ui
             <br />

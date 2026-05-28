@@ -208,6 +208,10 @@ import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach } from "vitest";
 
+HTMLCanvasElement.prototype.getContext = () => null;
+HTMLCanvasElement.prototype.toDataURL = () => "";
+HTMLCanvasElement.prototype.toBlob = () => {};
+
 afterEach(() => {
   cleanup();
 });

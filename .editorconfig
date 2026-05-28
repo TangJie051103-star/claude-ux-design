@@ -14,4 +14,4 @@ trim_trailing_whitespace = false
 [*.{ps1,psm1}]
 indent_style = space
 indent_size = 2
-end_of_line = crlf
+end_of_line = lf
