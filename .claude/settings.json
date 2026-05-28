@@ -1,0 +1,65 @@
+{
+  "env": {
+    "ANTHROPIC_BASE_URL": "https://api.deepseek.com/anthropic",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "deepseek-v4-flash",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "deepseek-v4-pro",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "deepseek-v4-pro",
+    "ANTHROPIC_MODEL": "deepseek-v4-pro",
+    "ZHIPU_OUTPUT_DIR": "d:/claude专用/output/images"
+  },
+  "includeCoAuthoredBy": false,
+  "permissions": {
+    "allow": [
+      "mcp__pencil",
+      "mcp__figma",
+      "Skill",
+      "Read",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "Edit",
+      "Write",
+      "TodoWrite",
+      "Agent",
+      "AskUserQuestion",
+      "EnterPlanMode",
+      "ExitPlanMode",
+      "npm install *",
+      "npm run dev",
+      "npm run build",
+      "npm run preview",
+      "npm run lint",
+      "npm run format",
+      "npm run format:check",
+      "npm create vite *",
+      "npx *",
+      "git status",
+      "git diff",
+      "git log",
+      "git add *",
+      "git commit *",
+      "git branch",
+      "git checkout *",
+      "New-Item *",
+      "Remove-Item *",
+      "Test-Path *",
+      "Get-ChildItem *",
+      "python d:/claude专用/scripts/zhipu_image.py *",
+      "python d:/claude专用/scripts/create-project.ps1 *"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "if (Test-Path .prettierrc) { npx prettier --write \"$env:CLAUDE_FILE_PATH\" 2>$null }"
+          }
+        ]
+      }
+    ]
+  }
+}
