@@ -1,0 +1,271 @@
+{
+  "version": "2.11",
+  "children": [
+    {
+      "type": "frame",
+      "id": "tzk6T",
+      "x": 0,
+      "y": 0,
+      "name": "Homepage",
+      "width": 1440,
+      "fill": "#000000",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "lv6Er",
+          "name": "Navbar",
+          "width": "fill_container",
+          "height": 64,
+          "fill": "#000000",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "#000000"
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "GqT1D",
+              "fill": "#000000",
+              "content": "UX Play",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "700"
+            },
+            {
+              "type": "frame",
+              "id": "C4Ld3",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "xfCDx",
+                  "fill": "#000000",
+                  "content": "设计",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "ZFa2R",
+                  "fill": "#000000",
+                  "content": "组件",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "text",
+                  "id": "jq07h",
+                  "fill": "#000000",
+                  "content": "关于",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "zkIPu",
+          "name": "Hero",
+          "width": "fill_container",
+          "height": 400,
+          "layout": "vertical",
+          "gap": 24,
+          "padding": 80,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "Lfm0D",
+              "fill": "#000000",
+              "content": "设计预览环境",
+              "fontFamily": "Inter",
+              "fontSize": 48,
+              "fontWeight": "700"
+            },
+            {
+              "type": "text",
+              "id": "e5Z01",
+              "fill": "#000000",
+              "content": "React + Vite + Tailwind CSS — 从想法到界面，一步到位",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "csd4H",
+          "name": "Cards",
+          "width": "fill_container",
+          "gap": 24,
+          "padding": [
+            0,
+            80
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "j5nJO",
+              "name": "Card",
+              "width": "fill_container",
+              "height": 160,
+              "fill": "#000000",
+              "cornerRadius": 12,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#000000"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "hazGR",
+                  "fill": "#000000",
+                  "content": "快速原型",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "l3ZWN2",
+                  "fill": "#000000",
+                  "content": "用 Pencil 画出想法，验证交互流程",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "xkbDG",
+              "name": "Card",
+              "width": "fill_container",
+              "height": 160,
+              "fill": "#000000",
+              "cornerRadius": 12,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#000000"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "cARaL",
+                  "fill": "#000000",
+                  "content": "组件开发",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "Ogzp9",
+                  "fill": "#000000",
+                  "content": "React + shadcn/ui 构建可复用组件",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "cHNRp",
+              "name": "Card",
+              "width": "fill_container",
+              "height": 160,
+              "fill": "#000000",
+              "cornerRadius": 12,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "#000000"
+              },
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "MdaQh",
+                  "fill": "#000000",
+                  "content": "质量保障",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "rUEHm",
+                  "fill": "#000000",
+                  "content": "自动测试 + A11y 审计 + 性能监控",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "f9ZCuj",
+          "name": "Footer",
+          "width": "fill_container",
+          "height": 64,
+          "fill": "#000000",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "top": 1
+            },
+            "fill": "#000000"
+          },
+          "padding": [
+            0,
+            32
+          ],
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "PcIPC",
+              "fill": "#000000",
+              "content": "© 2026 UX Play — 设计师的游乐场",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "normal"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
